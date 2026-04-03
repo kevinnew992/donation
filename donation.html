@@ -16,80 +16,15 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600;700&amp;family=Amatic+SC:wght@400;700&amp;family=Lato:wght@400;700&amp;display=swap"
     rel="stylesheet">
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-  <link rel="manifest" href="assets/img/favicons/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="assets/img/favicons/ms-icon-144x144.html">
-  <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="assets/css/app.min.css">
   <link rel="stylesheet" href="assets/css/fontawesome.min.css">
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<script>
-  // ------------------------------
-  // Preloader logic
-  // ------------------------------
-  window.addEventListener('load', function() {
-    const preloader = document.querySelector('.preloader');
-    if(preloader) preloader.style.display = 'none';
-  });
 
-  const cancelBtn = document.querySelector('.preloaderCls');
-  if(cancelBtn) {
-    cancelBtn.addEventListener('click', function() {
-      const preloader = document.querySelector('.preloader');
-      if(preloader) preloader.style.display = 'none';
-    });
-  }
-
-  // ------------------------------
-  // USD to LKR live conversion
-  // ------------------------------
-  const USD_TO_LKR = 365; // Set your current USD→LKR rate here
-  const donationInput = document.getElementById('donationAmountInput');
-
-  if(donationInput) {
-    let lkrDisplay = document.getElementById('lkrDisplay');
-
-    // If it doesn't exist, create it
-    if(!lkrDisplay) {
-      lkrDisplay = document.createElement('p');
-      lkrDisplay.id = 'lkrDisplay';
-      lkrDisplay.style.fontWeight = 'bold';
-      lkrDisplay.style.marginTop = '8px';
-      donationInput.parentNode.appendChild(lkrDisplay);
-    }
-
-    // Update on input
-    donationInput.addEventListener('input', function() {
-      const usd = parseFloat(donationInput.value);
-      if(!isNaN(usd) && usd > 0) {
-        const lkr = usd * USD_TO_LKR;
-        lkrDisplay.textContent = `≈ LKR ${lkr.toLocaleString()}`;
-      } else {
-        lkrDisplay.textContent = '';
-      }
-    });
-
-    // Trigger initial update
-    donationInput.dispatchEvent(new Event('input'));
-  }
-</script>
-<body class="">
+<body>
+  <!-- Preloader -->
   <div class="preloader">
     <button class="vs-btn preloaderCls">Cancel Preloader</button>
     <div class="preloader-inner">
@@ -127,45 +62,7 @@
     </div>
   </div>
 
-  <!-- Sticky header -->
-  <div class="sticky-header-wrap sticky-header py-2 py-lg-1">
-    <div class="container position-relative">
-      <div class="row align-items-center">
-        <div class="col-5 col-md-3">
-          <div class="logo">
-            <a href="index-2.html">
-              <img src="assets/img/logo.png" style="max-width: 40%; height: auto;" alt="Rambuke roots">
-            </a>
-          </div>
-        </div>
-        <div class="col-7 col-md-9 text-end position-static">
-          <nav class="main-menu menu-sticky1 d-none d-lg-block link-inherit">
-            <ul>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="products.html">Our Products</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="https://myfees.lk/" rel="noopener">Donate</a></li>
-              <li><a href="index-2.html">Home</a></li>
-            </ul>
-          </nav>
-          <button class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div class="vs-menu-wrapper">
-    <div class="vs-menu-area">
-      <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
-      <div class="mobile-logo">
-        <a href="index-2.html"><img src="assets/img/logo.png" alt="Rambuke roots"></a>
-      </div>
-      <div class="vs-mobile-menu link-inherit"></div>
-    </div>
-  </div>
-
-  <!-- Header main -->
+  <!-- Header -->
   <header class="header-wrapper header-layout3 header3-margin">
     <div class="container py-30">
       <div class="row align-items-center">
@@ -178,53 +75,12 @@
         </div>
         <div class="col-6 text-end">
           <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
-          <div class="social-header fs-xs">
-            <span class="text-body2 fs-xs fw-semibold font-theme me-2">Social Network</span>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container d-none d-lg-block">
-      <div class="header3-inner position-relative">
-        <div class="row align-items-center">
-          <div class="col-lg-8 col-xl-8">
-            <nav class="main-menu menu-style1 mobile-menu-active menu-style1 text-center">
-              <ul>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="products.html">Our Products</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="https://myfees.lk/" rel="noopener">Donate</a></li>
-                <li><a href="index-2.html">Home</a></li>
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
     </div>
   </header>
-<script>
-  // Hide preloader when page is fully loaded
-  window.addEventListener('load', function() {
-    const preloader = document.querySelector('.preloader');
-    if(preloader) {
-      preloader.style.display = 'none';
-    }
-  });
 
-  // Also allow "Cancel Preloader" button to close it manually
-  const cancelBtn = document.querySelector('.preloaderCls');
-  if(cancelBtn) {
-    cancelBtn.addEventListener('click', function() {
-      const preloader = document.querySelector('.preloader');
-      if(preloader) preloader.style.display = 'none';
-    });
-  }
-</script>
-  <!-- Hero / breadcumb -->
+  <!-- Hero -->
   <div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200"
     data-bg-src="assets/img/d1.png">
     <div class="container">
@@ -240,48 +96,7 @@
     </div>
   </div>
 
-  <!-- Campaign intro -->
-  <section class="vs-about-wrapper space-top space-md-bottom">
-    <div class="container">
-      <div class="row text-center text-lg-start justify-content-center justify-content-lg-start">
-        <div class="col-lg-6 mb-30">
-          <div class="section-title mb-30">
-            <span class="sub-title1">Rambuke roots Reforestation Initiative</span>
-            <h2 class="sec-title1" style="font-size: 56px;">Help Us Protect Sri Lanka’s Vanishing Plants</h2>
-            <h3 class="sec-title2" style="font-size: 40px;">1 Billion Plants by 2050</h3>
-            <img src="assets/img/icons/sec-icon-1.png" alt="Section Icon">
-          </div>
-          <p class="fs-md">
-            Many native and endangered plant species in Sri Lanka are on the brink of disappearing forever.
-            Through this long‑term program, Rambuke roots is committed to planting
-            <strong>1,000,000,000 carefully selected native and threatened plants across Sri Lanka by 2050</strong>.
-          </p>
-          <p class="fs-md mb-0">
-            Your contribution directly funds nursery development, sapling production, farmer partnerships,
-            and monitored planting in sensitive ecosystems. Every donation – large or small – helps restore
-            biodiversity and support rural communities.
-          </p>
-        </div>
-        <div class="col-lg-5 col-xl-4 mb-30">
-          <div class="vsadbox-box mega-hover">
-            <img src="assets/img/d2.jpg" alt="Reforestation" class="w-100">
-          </div>
-          <div class="about-features bg-theme mt-20 text-center text-lg-start">
-            <div>
-              <span class="bg-icon text-white"><i class="flaticon-leaf fa-6x"></i></span>
-              <div class="mb-2 mb-lg-3 text-white"><i class="flaticon-eco fa-3x"></i></div>
-              <h4 class="text-white fw-semibold mb-1">Transparent, Impact‑Driven Giving</h4>
-              <p class="text-white mb-0 fs-xs">
-                Each contribution is tracked against our 1B plants by 2050 target with regular impact updates.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Donation + Sampath form (with donor fields added) -->
+  <!-- Donation Section -->
   <section class="vs-about-wrapper position-relative bg-fluid about-layout1 space-md-bottom"
     data-bg-src="assets/img/about/about-bg-1-1.png">
     <div class="container">
@@ -294,29 +109,15 @@
           </div>
           <p class="fs-md">
             As a guideline, we estimate that <strong>USD 2</strong> can support the raising, planting, and early care
-            of <strong>one native sapling</strong> (including nursery, transport, and monitoring). You are welcome to
-            contribute <strong>any amount</strong> you wish.
+            of <strong>one native sapling</strong>. You are welcome to contribute <strong>any amount</strong> you wish.
           </p>
-          <p class="fs-md">
-            Simply choose your preferred amount in USD below. You will be securely redirected to
-            <strong>Payment Gateway</strong> to complete your card payment.
-          </p>
-          <ul class="list-unstyled mt-3">
-            <li class="mb-2"><i class="fas fa-check text-theme me-2"></i> No card details are stored on this website</li>
-            <li class="mb-2"><i class="fas fa-check text-theme me-2"></i> Bank secure payment processing</li>
-            <li class="mb-2"><i class="fas fa-check text-theme me-2"></i> Ideal for one‑time or recurring supporters</li>
-          </ul>
         </div>
 
         <div class="col-lg-6 mb-40">
           <div class="inner-wrap1 bg-fluid px-40 py-40" data-bg-src="assets/img/bg/newsletter-bg-1-1.png">
             <h3 class="sec-title3 mb-3 text-center text-lg-start">Donation Details</h3>
 
-            <!-- Sampath Bank payment form -->
-            <form id="sampathDonationForm" method="post"
-              action="<!-- TODO: Replace with Sampath Bank IPG payment URL -->">
-
-              <!-- Donor info added -->
+            <form id="sampathDonationForm" method="post" action="https://paylink.geniebiz.lk/rb26la9M16">
               <div class="row g-3 mb-3">
                 <div class="col-12">
                   <label class="form-label fw-semibold">Full Name</label>
@@ -332,34 +133,16 @@
                 </div>
               </div>
 
-              <!-- Amount override -->
               <div class="row g-3 mt-2">
                 <div class="col-md-12">
-                  <label class="form-label fw-semibold">Donation Amount</label>
+                  <label class="form-label fw-semibold">Donation Amount (USD)</label>
                   <input type="number" name="amount" id="donationAmountInput" class="form-control" min="1" required>
-                </div>
-                <div class="col-12">
-                  <p class="fs-xs text-muted mb-0">
-                    You can adjust this amount freely. International cards are welcome – your bank or card provider will
-                    convert from your card currency to <strong>USD</strong> according to their rates, subject to the
-                    options enabled on your Sampath merchant account.
-                  </p>
+                  <p id="lkrDisplay" style="font-weight:bold; margin-top:8px;"></p>
                 </div>
               </div>
 
-              <!-- Hidden fields -->
-              <input type="hidden" name="merchant_id" value="<!-- TODO: your_merchant_id -->">
-              <input type="hidden" name="order_id" value="<!-- TODO: generate unique reference -->">
-              <input type="hidden" name="currency" value="USD">
-              <input type="hidden" name="return_url" value="<!-- TODO: success URL -->">
-              <input type="hidden" name="cancel_url" value="<!-- TODO: cancel URL -->">
-              <input type="hidden" name="notify_url" value="<!-- TODO: notify URL -->">
-              <input type="hidden" name="signature" value="<!-- TODO: signature -->">
-
               <div class="mt-4 d-grid d-sm-flex align-items-center justify-content-between">
-                <a href="https://paylink.geniebiz.lk/rb26la9M16" class="vs-btn" role="button" rel="noopener">
-                  Click to donate
-                </a>
+                <button type="submit" class="vs-btn">Click to donate</button>
                 <p class="fs-xs mb-0 text-muted mt-3 mt-sm-0">
                   You will be redirected to secure payment page to enter your card details.
                 </p>
@@ -369,12 +152,49 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 
-<!-- Footer, scripts, etc remain 100% unchanged -->
-<!-- ... include your existing footer here ... -->
-<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-<script src="assets/js/app.min.js"></script>
-<script src="assets/js/vscustom-carousel.min.js"></script>
-<script src="assets/js/vsmenu.min.js"></script>
-<script src="assets/js/ajax-mail
+  <!-- Footer scripts -->
+  <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/app.min.js"></script>
+  <script src="assets/js/vscustom-carousel.min.js"></script>
+  <script src="assets/js/vsmenu.min.js"></script>
+
+  <!-- Preloader script -->
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      if (preloader) preloader.style.display = 'none';
+    });
+    const cancelBtn = document.querySelector('.preloaderCls');
+    if (cancelBtn) {
+      cancelBtn.addEventListener('click', function() {
+        const preloader = document.querySelector('.preloader');
+        if (preloader) preloader.style.display = 'none';
+      });
+    }
+  </script>
+
+  <!-- USD to LKR conversion script -->
+  <script>
+    const USD_TO_LKR = 365; // Current conversion rate
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const donationInput = document.getElementById("donationAmountInput");
+      const lkrDisplay = document.getElementById("lkrDisplay");
+
+      donationInput.addEventListener("input", function() {
+        const usd = parseFloat(donationInput.value);
+        if (!isNaN(usd) && usd > 0) {
+          const lkr = usd * USD_TO_LKR;
+          lkrDisplay.textContent = `≈ LKR ${lkr.toLocaleString()}`;
+        } else {
+          lkrDisplay.textContent = "";
+        }
+      });
+
+      donationInput.dispatchEvent(new Event("input"));
+    });
+  </script>
+</body>
+</html>
