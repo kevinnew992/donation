@@ -40,29 +40,53 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <script>
-  // USD to LKR conversion rate (update this as needed)
-  const USD_TO_LKR = 365; // Example rate: 1 USD = 365 LKR
+  // ------------------------------
+  // Preloader logic
+  // ------------------------------
+  window.addEventListener('load', function() {
+    const preloader = document.querySelector('.preloader');
+    if(preloader) preloader.style.display = 'none';
+  });
 
+  const cancelBtn = document.querySelector('.preloaderCls');
+  if(cancelBtn) {
+    cancelBtn.addEventListener('click', function() {
+      const preloader = document.querySelector('.preloader');
+      if(preloader) preloader.style.display = 'none';
+    });
+  }
+
+  // ------------------------------
+  // USD to LKR live conversion
+  // ------------------------------
+  const USD_TO_LKR = 365; // Set your current USD→LKR rate here
   const donationInput = document.getElementById('donationAmountInput');
 
   if(donationInput) {
-    // Create a display element for LKR
-    const lkrDisplay = document.createElement('p');
-    lkrDisplay.id = 'lkrDisplay';
-    lkrDisplay.style.fontWeight = 'bold';
-    lkrDisplay.style.marginTop = '8px';
-    donationInput.parentNode.appendChild(lkrDisplay);
+    let lkrDisplay = document.getElementById('lkrDisplay');
 
-    // Update LKR value on input
+    // If it doesn't exist, create it
+    if(!lkrDisplay) {
+      lkrDisplay = document.createElement('p');
+      lkrDisplay.id = 'lkrDisplay';
+      lkrDisplay.style.fontWeight = 'bold';
+      lkrDisplay.style.marginTop = '8px';
+      donationInput.parentNode.appendChild(lkrDisplay);
+    }
+
+    // Update on input
     donationInput.addEventListener('input', function() {
       const usd = parseFloat(donationInput.value);
-      if(!isNaN(usd)) {
+      if(!isNaN(usd) && usd > 0) {
         const lkr = usd * USD_TO_LKR;
         lkrDisplay.textContent = `≈ LKR ${lkr.toLocaleString()}`;
       } else {
         lkrDisplay.textContent = '';
       }
     });
+
+    // Trigger initial update
+    donationInput.dispatchEvent(new Event('input'));
   }
 </script>
 <body class="">
