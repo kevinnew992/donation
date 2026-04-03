@@ -39,7 +39,32 @@
   <link rel="stylesheet" href="assets/css/animate.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<script>
+  // USD to LKR conversion rate (update this as needed)
+  const USD_TO_LKR = 365; // Example rate: 1 USD = 365 LKR
 
+  const donationInput = document.getElementById('donationAmountInput');
+
+  if(donationInput) {
+    // Create a display element for LKR
+    const lkrDisplay = document.createElement('p');
+    lkrDisplay.id = 'lkrDisplay';
+    lkrDisplay.style.fontWeight = 'bold';
+    lkrDisplay.style.marginTop = '8px';
+    donationInput.parentNode.appendChild(lkrDisplay);
+
+    // Update LKR value on input
+    donationInput.addEventListener('input', function() {
+      const usd = parseFloat(donationInput.value);
+      if(!isNaN(usd)) {
+        const lkr = usd * USD_TO_LKR;
+        lkrDisplay.textContent = `≈ LKR ${lkr.toLocaleString()}`;
+      } else {
+        lkrDisplay.textContent = '';
+      }
+    });
+  }
+</script>
 <body class="">
   <div class="preloader">
     <button class="vs-btn preloaderCls">Cancel Preloader</button>
