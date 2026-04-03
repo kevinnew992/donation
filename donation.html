@@ -157,7 +157,24 @@
       </div>
     </div>
   </header>
+<script>
+  // Hide preloader when page is fully loaded
+  window.addEventListener('load', function() {
+    const preloader = document.querySelector('.preloader');
+    if(preloader) {
+      preloader.style.display = 'none';
+    }
+  });
 
+  // Also allow "Cancel Preloader" button to close it manually
+  const cancelBtn = document.querySelector('.preloaderCls');
+  if(cancelBtn) {
+    cancelBtn.addEventListener('click', function() {
+      const preloader = document.querySelector('.preloader');
+      if(preloader) preloader.style.display = 'none';
+    });
+  }
+</script>
   <!-- Hero / breadcumb -->
   <div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200"
     data-bg-src="assets/img/d1.png">
