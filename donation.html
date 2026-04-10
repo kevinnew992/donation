@@ -1,117 +1,216 @@
-<input type="text" placeholder="Full Name" class="form-control mb-2" required>
-<input type="email" placeholder="Email" class="form-control mb-2" required>
-<input type="tel" placeholder="Phone" class="form-control mb-2">
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Rambuke Roots (Pvt) Ltd. - Donate</title>
+  <meta name="author" content="Rambuke Roots">
+  <meta name="description" content="Support Rambuke Roots to plant 1 billion native and endangered plants in Sri Lanka by 2050.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 
-<!-- ✅ FIXED: DROPDOWN ADDED PROPERLY -->
-<select id="donationAmountInput" class="form-control mb-2" required>
-  <option value="">Select Amount</option>
-  <option value="50">50</option>
-  <option value="100">100</option>
-  <option value="500">500</option>
-  <option value="1000">1000</option>
-  <option value="2000">2000</option>
-  <option value="5000">5000</option>
-  <option value="10000">10000</option>
-  <option value="20000">20000</option>
-  <option value="30000">30000</option>
-  <option value="40000">40000</option>
-  <option value="50000">50000</option>
-</select>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 
-<select id="currencySelect" class="form-control mb-2">
-  <option value="USD">USD</option>
-  <option value="GBP">GBP</option>
-  <option value="EUR">EUR</option>
-  <option value="CNY">CNY</option>
-</select>
+  <!-- Your original CSS files -->
+  <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="assets/css/app.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-<p id="lkrDisplay"></p>
+  <style>
+    .donation-section { padding: 80px 0; background: #f8f9fa; }
+    
+    .left-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1a1a1a;
+    }
+    
+    .left-content .sub-title {
+      color: #00bfff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
 
-<a href="#" id="donateBtn" class="vs-btn">Click to donate</a>
+    .form-box {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
 
-<script>
-window.addEventListener('load', function () {
-  document.querySelector('.preloader').style.display = 'none';
-});
+    .form-control, .form-select {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
 
-const conversionRates = {
-  USD: 315,
-  GBP: 425,
-  EUR: 340,
-  CNY: 45
-};
+    .form-control:focus, .form-select:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.15);
+    }
 
-const amountInput = document.getElementById("donationAmountInput");
-const currencySelect = document.getElementById("currencySelect");
-const lkrDisplay = document.getElementById("lkrDisplay");
+    #donateBtn {
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      width: 100%;
+      margin-top: 10px;
+    }
 
-function updateLKR() {
-  const amount = parseFloat(amountInput.value);
-  const currency = currencySelect.value;
+    #donateBtn:hover {
+      background-color: #0099cc;
+    }
 
-  if (!isNaN(amount)) {
-    const lkr = amount * conversionRates[currency];
-    lkrDisplay.textContent = "≈ LKR " + lkr.toLocaleString();
-  } else {
-    lkrDisplay.textContent = "";
-  }
-}
+    #lkrDisplay {
+      font-weight: 600;
+      color: #28a745;
+      margin: 10px 0 20px 0;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
 
-amountInput.addEventListener("change", updateLKR);
-currencySelect.addEventListener("change", updateLKR);
+  <!-- Preloader -->
+  <div class="preloader">
+    <button class="vs-btn preloaderCls">Cancel Preloader</button>
+    <div class="preloader-inner">
+      <div class="loader-logo">
+        <img src="assets/img/logo.png" style="max-width: 40%; height: auto;" alt="Rambuke Roots">
+      </div>
+      <div class="loader-wrap pt-4"><span class="loader"></span></div>
+    </div>
+  </div>
 
-// ✅ FIXED DONATION LOGIC
-document.getElementById("donateBtn").addEventListener("click", function (e) {
-  e.preventDefault();
+  <!-- Donation Content -->
+  <section class="donation-section">
+    <div class="container">
+      <div class="row align-items-start gx-5">
+        
+        <!-- Left Side -->
+        <div class="col-lg-6 left-content mb-5">
+          <p class="sub-title mb-2">CHOOSE HOW YOU GIVE</p>
+          <h1 class="mb-4">Support the 1B Plants by<br>2050 Fund</h1>
+          
+          <div style="margin: 20px 0;">
+            <span style="color:#f4c542; font-size:1.4rem;">✦✦✦</span>
+          </div>
+          
+          <p class="fs-md text-muted">
+            As a guideline, we estimate that <strong>USD 2</strong> can support the raising, planting, 
+            and early care of <strong>one native sapling</strong>. You are welcome to contribute any amount you wish.
+          </p>
+        </div>
 
-  const amount = parseInt(document.getElementById("donationAmountInput").value);
+        <!-- Right Side - Form -->
+        <div class="col-lg-6">
+          <div class="form-box">
+            <h3 class="mb-4" style="font-weight:600;">Donation Details</h3>
+            
+            <form id="donationForm">
+              <input type="text" placeholder="Full Name" class="form-control" required>
+              <input type="email" placeholder="Email" class="form-control" required>
+              <input type="tel" placeholder="Phone" class="form-control">
 
-  if (!amount) {
-    alert("Select an amount");
-    return;
-  }
+              <!-- USD Amount Dropdown -->
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Select Donation Amount (USD)</label>
+                <select id="presetAmountSelect" class="form-select">
+                  <option value="">— Choose an amount —</option>
+                  <option value="50">USD 50</option>
+                  <option value="100">USD 100</option>
+                  <option value="500">USD 500</option>
+                  <option value="1000">USD 1,000</option>
+                  <option value="2000">USD 2,000</option>
+                  <option value="5000">USD 5,000</option>
+                  <option value="10000">USD 10,000</option>
+                  <option value="20000">USD 20,000</option>
+                  <option value="30000">USD 30,000</option>
+                  <option value="40000">USD 40,000</option>
+                  <option value="50000">USD 50,000</option>
+                </select>
+              </div>
 
-  let link = "";
+              <!-- LKR Display -->
+              <p id="lkrDisplay"></p>
 
-  switch (amount) {
-    case 50:
-      link = "https://paylink.geniebiz.lk/LINK_50";
-      break;
-    case 100:
-      link = "https://paylink.geniebiz.lk/LINK_100";
-      break;
-    case 500:
-      link = "https://paylink.geniebiz.lk/LINK_500";
-      break;
-    case 1000:
-      link = "https://paylink.geniebiz.lk/nAz10qb5YK";
-      break;
-    case 2000:
-      link = "https://paylink.geniebiz.lk/LINK_2000";
-      break;
-    case 5000:
-      link = "https://paylink.geniebiz.lk/woZQZqDl7A";
-      break;
-    case 10000:
-      link = "https://paylink.geniebiz.lk/n48W3JABXk";
-      break;
-    case 20000:
-      link = "https://paylink.geniebiz.lk/LINK_20000";
-      break;
-    case 30000:
-      link = "https://paylink.geniebiz.lk/LINK_30000";
-      break;
-    case 40000:
-      link = "https://paylink.geniebiz.lk/LINK_40000";
-      break;
-    case 50000:
-      link = "https://paylink.geniebiz.lk/LINK_50000";
-      break;
-    default:
-      alert("Invalid selection");
-      return;
-  }
+              <!-- Donate Button -->
+              <a href="#" id="donateBtn" class="btn">Click to donate</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  window.location.href = link;
-});
-</script>
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      document.querySelector('.preloader').style.display = 'none';
+    });
+
+    // Conversion Rate (1 USD = LKR)
+    const usdToLkrRate = 315;   // You can update this rate anytime
+
+    const amountSelect = document.getElementById("presetAmountSelect");
+    const lkrDisplay = document.getElementById("lkrDisplay");
+
+    // Update LKR display when amount changes
+    function updateLKR() {
+      const amount = parseFloat(amountSelect.value);
+      if (amount && !isNaN(amount)) {
+        const lkr = amount * usdToLkrRate;
+        lkrDisplay.innerHTML = `≈ <strong>LKR ${lkr.toLocaleString()}</strong>`;
+      } else {
+        lkrDisplay.textContent = "";
+      }
+    }
+
+    amountSelect.addEventListener("change", updateLKR);
+
+    // Payment Links (Replace with your real GenieBiz USD links)
+    const paymentLinks = {
+      "50":    "https://paylink.geniebiz.lk/YOUR_50_USD_LINK",
+      "100":   "https://paylink.geniebiz.lk/YOUR_100_USD_LINK",
+      "500":   "https://paylink.geniebiz.lk/YOUR_500_USD_LINK",
+      "1000":  "https://paylink.geniebiz.lk/YOUR_1000_USD_LINK",
+      "2000":  "https://paylink.geniebiz.lk/YOUR_2000_USD_LINK",
+      "5000":  "https://paylink.geniebiz.lk/YOUR_5000_USD_LINK",
+      "10000": "https://paylink.geniebiz.lk/YOUR_10000_USD_LINK",
+      "20000": "https://paylink.geniebiz.lk/YOUR_20000_USD_LINK",
+      "30000": "https://paylink.geniebiz.lk/YOUR_30000_USD_LINK",
+      "40000": "https://paylink.geniebiz.lk/YOUR_40000_USD_LINK",
+      "50000": "https://paylink.geniebiz.lk/YOUR_50000_USD_LINK"
+    };
+
+    const generalLink = "https://paylink.geniebiz.lk/yd64Gw8dlJ";
+
+    // Donate Button
+    document.getElementById("donateBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const selectedAmount = amountSelect.value;
+
+      if (!selectedAmount) {
+        alert("Please select a donation amount.");
+        return;
+      }
+
+      const link = paymentLinks[selectedAmount] || generalLink;
+      window.location.href = link;
+    });
+  </script>
+</body>
+</html>
